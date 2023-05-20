@@ -11,6 +11,7 @@ import 'month_year_picker_localizations_en.dart';
 import 'month_year_picker_localizations_es.dart';
 import 'month_year_picker_localizations_fr.dart';
 import 'month_year_picker_localizations_id.dart';
+import 'month_year_picker_localizations_it.dart';
 import 'month_year_picker_localizations_ja.dart';
 import 'month_year_picker_localizations_ko.dart';
 import 'month_year_picker_localizations_ms.dart';
@@ -108,6 +109,7 @@ abstract class MonthYearPickerLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('id'),
+    Locale('it'),
     Locale('ja'),
     Locale('ko'),
     Locale('ms'),
@@ -148,7 +150,24 @@ class _MonthYearPickerLocalizationsDelegate extends LocalizationsDelegate<MonthY
   }
 
   @override
-  bool isSupported(Locale locale) => true;
+  bool isSupported(Locale locale) => <String>[
+        'ar',
+        'de',
+        'en',
+        'es',
+        'fr',
+        'id',
+        'it',
+        'ja',
+        'ko',
+        'ms',
+        'pt',
+        'ru',
+        'th',
+        'tr',
+        'vi',
+        'zh'
+      ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_MonthYearPickerLocalizationsDelegate old) => false;
@@ -181,6 +200,8 @@ MonthYearPickerLocalizations lookupMonthYearPickerLocalizations(Locale locale) {
       return MonthYearPickerLocalizationsFr();
     case 'id':
       return MonthYearPickerLocalizationsId();
+    case 'it':
+      return MonthYearPickerLocalizationsIt();
     case 'ja':
       return MonthYearPickerLocalizationsJa();
     case 'ko':

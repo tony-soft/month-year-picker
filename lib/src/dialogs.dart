@@ -68,6 +68,12 @@ Future<DateTime?> showMonthYearPicker({
   }
 
   if (locale != null) {
+    // 지원하지 않는 Locale 인 경우, 영어로 변경
+    var isSupported = MonthYearPickerLocalizations.delegate.isSupported(locale);
+    if (!isSupported) {
+      locale = const Locale('en');
+    }
+
     dialog = Localizations.override(
       context: context,
       locale: locale,

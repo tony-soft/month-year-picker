@@ -15,6 +15,7 @@ import 'month_year_picker_localizations_ja.dart';
 import 'month_year_picker_localizations_ko.dart';
 import 'month_year_picker_localizations_ms.dart';
 import 'month_year_picker_localizations_pt.dart';
+import 'month_year_picker_localizations_ru.dart';
 import 'month_year_picker_localizations_th.dart';
 import 'month_year_picker_localizations_tr.dart';
 import 'month_year_picker_localizations_vi.dart';
@@ -111,6 +112,7 @@ abstract class MonthYearPickerLocalizations {
     Locale('ko'),
     Locale('ms'),
     Locale('pt'),
+    Locale('ru'),
     Locale('th'),
     Locale('tr'),
     Locale('vi'),
@@ -146,22 +148,7 @@ class _MonthYearPickerLocalizationsDelegate extends LocalizationsDelegate<MonthY
   }
 
   @override
-  bool isSupported(Locale locale) => <String>[
-        'ar',
-        'de',
-        'en',
-        'es',
-        'fr',
-        'id',
-        'ja',
-        'ko',
-        'ms',
-        'pt',
-        'th',
-        'tr',
-        'vi',
-        'zh'
-      ].contains(locale.languageCode);
+  bool isSupported(Locale locale) => true;
 
   @override
   bool shouldReload(_MonthYearPickerLocalizationsDelegate old) => false;
@@ -202,6 +189,8 @@ MonthYearPickerLocalizations lookupMonthYearPickerLocalizations(Locale locale) {
       return MonthYearPickerLocalizationsMs();
     case 'pt':
       return MonthYearPickerLocalizationsPt();
+    case 'ru':
+      return MonthYearPickerLocalizationsRu();
     case 'th':
       return MonthYearPickerLocalizationsTh();
     case 'tr':
@@ -212,9 +201,5 @@ MonthYearPickerLocalizations lookupMonthYearPickerLocalizations(Locale locale) {
       return MonthYearPickerLocalizationsZh();
   }
 
-  throw FlutterError(
-      'MonthYearPickerLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+  return MonthYearPickerLocalizationsEn();
 }

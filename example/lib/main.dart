@@ -61,12 +61,36 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () => _onPressed(context: context),
             ),
             TextButton(
+              child: const Text('English'),
+              onPressed: () => _onPressed(context: context, locale: 'en'),
+            ),
+            TextButton(
               child: const Text('BAHASA MALAYSIA'),
               onPressed: () => _onPressed(context: context, locale: 'ms'),
             ),
             TextButton(
               child: const Text('اللغة العربية'),
               onPressed: () => _onPressed(context: context, locale: 'ar'),
+            ),
+            TextButton(
+              child: const Text('한국어'),
+              onPressed: () => _onPressed(context: context, locale: 'ko'),
+            ),
+            TextButton(
+              child: const Text('스페인어'),
+              onPressed: () => _onPressed(context: context, locale: 'es'),
+            ),
+            TextButton(
+              child: const Text('러시아어'),
+              onPressed: () => _onPressed(context: context, locale: 'ru'),
+            ),
+            TextButton(
+              child: const Text('이탈리아어'),
+              onPressed: () => _onPressed(context: context, locale: 'it'),
+            ),
+            TextButton(
+              child: const Text('예외어'),
+              onPressed: () => _onPressed(context: context, locale: 'exception'),
             ),
           ],
         ),
@@ -83,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       initialDate: _selected ?? DateTime.now(),
       firstDate: DateTime(2019),
-      lastDate: DateTime(2022),
+      lastDate: DateTime(2030),
       locale: localeObj,
     );
     // final selected = await showDatePicker(

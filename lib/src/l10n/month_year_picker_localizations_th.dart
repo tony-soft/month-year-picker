@@ -2,7 +2,7 @@ import 'month_year_picker_localizations.dart';
 
 /// The translations for Thai (`th`).
 class MonthYearPickerLocalizationsTh extends MonthYearPickerLocalizations {
-  MonthYearPickerLocalizationsTh([String locale = 'th']) : super(locale);
+  MonthYearPickerLocalizationsTh([super.locale = 'th']);
 
   @override
   String get helpText => 'เลือก เดือน/ปี';

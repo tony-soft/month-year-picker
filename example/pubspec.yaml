@@ -8,17 +8,17 @@ environment:
   flutter: '>=3.10.0'
 
 dependencies:
-  cupertino_icons: ^1.0.5
+  cupertino_icons: 1.0.6
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.18.0
+  intl: 0.18.1
   month_year_picker:
     path: ..
 
 dev_dependencies:
-  flutter_lints: ^2.0.1
+  flutter_lints: 3.0.1
 
 flutter:
   uses-material-design: true

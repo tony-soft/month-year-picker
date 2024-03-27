@@ -12,8 +12,8 @@ class MonthPicker extends StatefulWidget {
     required this.onMonthSelected,
     required this.onPageChanged,
     this.selectableMonthYearPredicate,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   // ---------------------------------- FIELDS ---------------------------------
   final DateTime firstDate;
@@ -133,8 +133,8 @@ class YearPicker extends StatefulWidget {
     required this.onYearSelected,
     required this.onPageChanged,
     this.selectableMonthYearPredicate,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   // ---------------------------------- FIELDS ---------------------------------
   final DateTime firstDate;
@@ -244,8 +244,7 @@ class _MonthButton extends StatelessWidget {
     required this.selectedDate,
     required this.onMonthSelected,
     this.selectableMonthYearPredicate,
-    Key? key,
-  }) : super(key: key);
+  });
 
   // ---------------------------------- FIELDS ---------------------------------
   final int page;
@@ -292,8 +291,7 @@ class _YearButton extends StatelessWidget {
     required this.selectedDate,
     required this.onYearSelected,
     this.selectableMonthYearPredicate,
-    Key? key,
-  }) : super(key: key);
+  });
 
   // ---------------------------------- FIELDS ---------------------------------
   final int page;
@@ -337,8 +335,7 @@ class _Button extends StatelessWidget {
     required this.isHighlighted,
     required this.isSelected,
     required this.onPressed,
-    Key? key,
-  }) : super(key: key);
+  });
 
   // ---------------------------------- FIELDS ---------------------------------
   final String label;

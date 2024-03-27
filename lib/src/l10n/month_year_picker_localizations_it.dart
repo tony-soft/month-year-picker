@@ -2,7 +2,7 @@ import 'month_year_picker_localizations.dart';
 
 /// The translations for Italian (`it`).
 class MonthYearPickerLocalizationsIt extends MonthYearPickerLocalizations {
-  MonthYearPickerLocalizationsIt([String locale = 'it']) : super(locale);
+  MonthYearPickerLocalizationsIt([super.locale = 'it']);
 
   @override
   String get helpText => 'SELEZIONA MESE/ANNO';

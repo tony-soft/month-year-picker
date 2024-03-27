@@ -10,8 +10,8 @@ void main() {
 class ExampleApp extends StatelessWidget {
   // ------------------------------- CONSTRUCTORS ------------------------------
   const ExampleApp({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   // --------------------------------- METHODS ---------------------------------
   @override
@@ -31,8 +31,8 @@ class ExampleApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   // ------------------------------- CONSTRUCTORS ------------------------------
   const MyHomePage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   // --------------------------------- METHODS ---------------------------------
   @override

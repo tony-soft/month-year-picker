@@ -99,13 +99,13 @@ enum MonthYearPickerMode {
 class MonthYearPickerDialog extends StatefulWidget {
   // ------------------------------- CONSTRUCTORS ------------------------------
   const MonthYearPickerDialog({
-    Key? key,
+    super.key,
     required this.initialDate,
     required this.firstDate,
     required this.lastDate,
     required this.initialMonthYearPickerMode,
     this.selectableMonthYearPredicate,
-  }) : super(key: key);
+  });
 
   // ---------------------------------- FIELDS ---------------------------------
   final DateTime initialDate;
@@ -131,8 +131,12 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
   // -------------------------------- PROPERTIES -------------------------------
   Size get _dialogSize {
     final orientation = MediaQuery.of(context).orientation;
-    final offset =
-        Theme.of(context).materialTapTargetSize == MaterialTapTargetSize.padded ? const Offset(0.0, 24.0) : Offset.zero;
+    final Offset offset;
+    if (Theme.of(context).materialTapTargetSize == MaterialTapTargetSize.padded) {
+      offset = const Offset(0.0, 24.0);
+    } else {
+      offset = Offset.zero;
+    }
     switch (orientation) {
       case Orientation.portrait:
         return _portraitDialogSize + offset;
@@ -415,13 +419,12 @@ class _MonthYearPickerDialogState extends State<MonthYearPickerDialog> {
 class _Header extends StatelessWidget {
   // ------------------------------- CONSTRUCTORS ------------------------------
   const _Header({
-    Key? key,
     required this.helpText,
     required this.titleText,
     this.titleSemanticsLabel,
     required this.titleStyle,
     required this.orientation,
-  }) : super(key: key);
+  });
 
   // ---------------------------------- FIELDS ---------------------------------
   final String helpText;

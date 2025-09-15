@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -27,6 +28,34 @@ class MonthPicker extends StatefulWidget {
   // --------------------------------- METHODS ---------------------------------
   @override
   State<MonthPicker> createState() => MonthPickerState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<DateTime>('firstDate', firstDate))
+      ..add(DiagnosticsProperty<DateTime>('lastDate', lastDate))
+      ..add(DiagnosticsProperty<DateTime>('initialDate', initialDate))
+      ..add(DiagnosticsProperty<DateTime>('selectedDate', selectedDate))
+      ..add(
+        ObjectFlagProperty<ValueChanged<DateTime>>.has(
+          'onMonthSelected',
+          onMonthSelected,
+        ),
+      )
+      ..add(
+        ObjectFlagProperty<ValueChanged<DateTime>>.has(
+          'onPageChanged',
+          onPageChanged,
+        ),
+      )
+      ..add(
+        ObjectFlagProperty<SelectableMonthYearPredicate?>.has(
+          'selectableMonthYearPredicate',
+          selectableMonthYearPredicate,
+        ),
+      );
+  }
 }
 
 class MonthPickerState extends State<MonthPicker> {
@@ -59,7 +88,6 @@ class MonthPickerState extends State<MonthPicker> {
   Widget build(BuildContext context) {
     return PageView.builder(
       controller: _pageController,
-      scrollDirection: Axis.horizontal,
       physics: const AlwaysScrollableScrollPhysics(),
       onPageChanged: _onPageChanged,
       itemCount: _pageCount,
@@ -67,23 +95,31 @@ class MonthPickerState extends State<MonthPicker> {
     );
   }
 
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>('canGoDown', canGoDown))
+      ..add(DiagnosticsProperty<bool>('canGoUp', canGoUp));
+  }
+
   void goToYear({required int year}) {
     _currentPage = year - widget.firstDate.year;
     _pageController.jumpToPage(_currentPage);
   }
 
-  void goDown() {
+  Future<void> goDown() {
     _currentPage = _pageController.page!.toInt() - 1;
-    _pageController.animateToPage(
+    return _pageController.animateToPage(
       _currentPage,
       duration: const Duration(milliseconds: 400),
       curve: Curves.easeInOut,
     );
   }
 
-  void goUp() {
+  Future<void> goUp() {
     _currentPage = _pageController.page!.toInt() + 1;
-    _pageController.animateToPage(
+    return _pageController.animateToPage(
       _currentPage,
       duration: const Duration(milliseconds: 400),
       curve: Curves.easeInOut,
@@ -148,6 +184,34 @@ class YearPicker extends StatefulWidget {
   // --------------------------------- METHODS ---------------------------------
   @override
   State<YearPicker> createState() => YearPickerState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<DateTime>('firstDate', firstDate))
+      ..add(DiagnosticsProperty<DateTime>('lastDate', lastDate))
+      ..add(DiagnosticsProperty<DateTime>('initialDate', initialDate))
+      ..add(DiagnosticsProperty<DateTime>('selectedDate', selectedDate))
+      ..add(
+        ObjectFlagProperty<ValueChanged<DateTime>>.has(
+          'onYearSelected',
+          onYearSelected,
+        ),
+      )
+      ..add(
+        ObjectFlagProperty<ValueChanged<DateTime>>.has(
+          'onPageChanged',
+          onPageChanged,
+        ),
+      )
+      ..add(
+        ObjectFlagProperty<SelectableMonthYearPredicate?>.has(
+          'selectableMonthYearPredicate',
+          selectableMonthYearPredicate,
+        ),
+      );
+  }
 }
 
 class YearPickerState extends State<YearPicker> {
@@ -190,18 +254,26 @@ class YearPickerState extends State<YearPicker> {
     );
   }
 
-  void goDown() {
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty<bool>('canGoDown', canGoDown))
+      ..add(DiagnosticsProperty<bool>('canGoUp', canGoUp));
+  }
+
+  Future<void> goDown() {
     _currentPage = _pageController.page!.toInt() - 1;
-    _pageController.animateToPage(
+    return _pageController.animateToPage(
       _currentPage,
       duration: const Duration(milliseconds: 400),
       curve: Curves.easeInOut,
     );
   }
 
-  void goUp() {
+  Future<void> goUp() {
     _currentPage = _pageController.page!.toInt() + 1;
-    _pageController.animateToPage(
+    return _pageController.animateToPage(
       _currentPage,
       duration: const Duration(milliseconds: 400),
       curve: Curves.easeInOut,
@@ -279,6 +351,29 @@ class _MonthButton extends StatelessWidget {
       onPressed: () => onMonthSelected(DateTime(date.year, date.month)),
     );
   }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(IntProperty('page', page))
+      ..add(IntProperty('index', index))
+      ..add(DiagnosticsProperty<DateTime>('firstDate', firstDate))
+      ..add(DiagnosticsProperty<DateTime>('lastDate', lastDate))
+      ..add(DiagnosticsProperty<DateTime>('selectedDate', selectedDate))
+      ..add(
+        ObjectFlagProperty<ValueChanged<DateTime>>.has(
+          'onMonthSelected',
+          onMonthSelected,
+        ),
+      )
+      ..add(
+        ObjectFlagProperty<SelectableMonthYearPredicate?>.has(
+          'selectableMonthYearPredicate',
+          selectableMonthYearPredicate,
+        ),
+      );
+  }
 }
 
 class _YearButton extends StatelessWidget {
@@ -325,6 +420,29 @@ class _YearButton extends StatelessWidget {
       onPressed: () => onYearSelected(DateTime(date.year)),
     );
   }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(IntProperty('page', page))
+      ..add(IntProperty('index', index))
+      ..add(DiagnosticsProperty<DateTime>('firstDate', firstDate))
+      ..add(DiagnosticsProperty<DateTime>('lastDate', lastDate))
+      ..add(DiagnosticsProperty<DateTime>('selectedDate', selectedDate))
+      ..add(
+        ObjectFlagProperty<ValueChanged<DateTime>>.has(
+          'onYearSelected',
+          onYearSelected,
+        ),
+      )
+      ..add(
+        ObjectFlagProperty<SelectableMonthYearPredicate?>.has(
+          'selectableMonthYearPredicate',
+          selectableMonthYearPredicate,
+        ),
+      );
+  }
 }
 
 class _Button extends StatelessWidget {
@@ -368,6 +486,17 @@ class _Button extends StatelessWidget {
       ),
       child: Text(label),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(StringProperty('label', label))
+      ..add(DiagnosticsProperty<bool>('isEnabled', isEnabled))
+      ..add(DiagnosticsProperty<bool>('isHighlighted', isHighlighted))
+      ..add(DiagnosticsProperty<bool>('isSelected', isSelected))
+      ..add(ObjectFlagProperty<VoidCallback>.has('onPressed', onPressed));
   }
 }
 

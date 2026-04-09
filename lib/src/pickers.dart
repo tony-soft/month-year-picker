@@ -127,22 +127,32 @@ class MonthPickerState extends State<MonthPicker> {
   }
 
   Widget _buildItem(final BuildContext context, final int page) {
-    return GridView.count(
-      physics: const NeverScrollableScrollPhysics(),
+    return Padding(
       padding: const EdgeInsets.all(8.0),
-      crossAxisCount: 4,
-      children: [
-        for (var i = 0; i < 12; i++)
-          _MonthButton(
-            page: page,
-            index: i,
-            firstDate: widget.firstDate,
-            lastDate: widget.lastDate,
-            selectedDate: widget.selectedDate,
-            onMonthSelected: widget.onMonthSelected,
-            selectableMonthYearPredicate: widget.selectableMonthYearPredicate,
-          ),
-      ],
+      child: Column(
+        children: [
+          for (var row = 0; row < 3; row++)
+            Expanded(
+              child: Row(
+                children: [
+                  for (var col = 0; col < 4; col++)
+                    Expanded(
+                      child: _MonthButton(
+                        page: page,
+                        index: row * 4 + col,
+                        firstDate: widget.firstDate,
+                        lastDate: widget.lastDate,
+                        selectedDate: widget.selectedDate,
+                        onMonthSelected: widget.onMonthSelected,
+                        selectableMonthYearPredicate:
+                            widget.selectableMonthYearPredicate,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+        ],
+      ),
     );
   }
 
@@ -281,22 +291,32 @@ class YearPickerState extends State<YearPicker> {
   }
 
   Widget _buildItem(final BuildContext context, final int page) {
-    return GridView.count(
-      physics: const NeverScrollableScrollPhysics(),
+    return Padding(
       padding: const EdgeInsets.all(8.0),
-      crossAxisCount: 4,
-      children: [
-        for (var i = 0; i < 12; i++)
-          _YearButton(
-            page: page,
-            index: i,
-            firstDate: widget.firstDate,
-            lastDate: widget.lastDate,
-            selectedDate: widget.selectedDate,
-            onYearSelected: widget.onYearSelected,
-            selectableMonthYearPredicate: widget.selectableMonthYearPredicate,
-          ),
-      ],
+      child: Column(
+        children: [
+          for (var row = 0; row < 3; row++)
+            Expanded(
+              child: Row(
+                children: [
+                  for (var col = 0; col < 4; col++)
+                    Expanded(
+                      child: _YearButton(
+                        page: page,
+                        index: row * 4 + col,
+                        firstDate: widget.firstDate,
+                        lastDate: widget.lastDate,
+                        selectedDate: widget.selectedDate,
+                        onYearSelected: widget.onYearSelected,
+                        selectableMonthYearPredicate:
+                            widget.selectableMonthYearPredicate,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+        ],
+      ),
     );
   }
 

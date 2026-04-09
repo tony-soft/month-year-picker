@@ -498,7 +498,7 @@ class _Button extends StatelessWidget {
       style: TextButton.styleFrom(
         backgroundColor: buttonBackground,
         foregroundColor: buttonText,
-        disabledForegroundColor: buttonText,
+        disabledForegroundColor: buttonText.withValues(alpha: 0.38),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100.0),
         ),

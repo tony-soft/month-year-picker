@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'month_year_picker_localizations_ar.dart';
+import 'month_year_picker_localizations_cs.dart';
 import 'month_year_picker_localizations_de.dart';
 import 'month_year_picker_localizations_en.dart';
 import 'month_year_picker_localizations_es.dart';
@@ -15,6 +16,7 @@ import 'month_year_picker_localizations_it.dart';
 import 'month_year_picker_localizations_ja.dart';
 import 'month_year_picker_localizations_ko.dart';
 import 'month_year_picker_localizations_ms.dart';
+import 'month_year_picker_localizations_pl.dart';
 import 'month_year_picker_localizations_pt.dart';
 import 'month_year_picker_localizations_ru.dart';
 import 'month_year_picker_localizations_th.dart';
@@ -105,6 +107,7 @@ abstract class MonthYearPickerLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
+    Locale('cs'),
     Locale('de'),
     Locale('en'),
     Locale('es'),
@@ -114,6 +117,7 @@ abstract class MonthYearPickerLocalizations {
     Locale('ja'),
     Locale('ko'),
     Locale('ms'),
+    Locale('pl'),
     Locale('pt'),
     Locale('ru'),
     Locale('th'),
@@ -154,6 +158,7 @@ class _MonthYearPickerLocalizationsDelegate extends LocalizationsDelegate<MonthY
   @override
   bool isSupported(Locale locale) => <String>[
         'ar',
+        'cs',
         'de',
         'en',
         'es',
@@ -163,6 +168,7 @@ class _MonthYearPickerLocalizationsDelegate extends LocalizationsDelegate<MonthY
         'ja',
         'ko',
         'ms',
+        'pl',
         'pt',
         'ru',
         'th',
@@ -193,6 +199,8 @@ MonthYearPickerLocalizations lookupMonthYearPickerLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'ar':
       return MonthYearPickerLocalizationsAr();
+    case 'cs':
+      return MonthYearPickerLocalizationsCs();
     case 'de':
       return MonthYearPickerLocalizationsDe();
     case 'en':
@@ -211,6 +219,8 @@ MonthYearPickerLocalizations lookupMonthYearPickerLocalizations(Locale locale) {
       return MonthYearPickerLocalizationsKo();
     case 'ms':
       return MonthYearPickerLocalizationsMs();
+    case 'pl':
+      return MonthYearPickerLocalizationsPl();
     case 'pt':
       return MonthYearPickerLocalizationsPt();
     case 'ru':

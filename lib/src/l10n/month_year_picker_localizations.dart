@@ -125,6 +125,7 @@ abstract class MonthYearPickerLocalizations {
     Locale('uk'),
     Locale('vi'),
     Locale('zh'),
+    Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     Locale('zh', 'CH')
   ];
 
@@ -183,6 +184,18 @@ class _MonthYearPickerLocalizationsDelegate extends LocalizationsDelegate<MonthY
 }
 
 MonthYearPickerLocalizations lookupMonthYearPickerLocalizations(Locale locale) {
+  // Lookup logic when language+script codes are specified.
+  switch (locale.languageCode) {
+    case 'zh':
+      {
+        switch (locale.scriptCode) {
+          case 'Hant':
+            return MonthYearPickerLocalizationsZhHant();
+        }
+        break;
+      }
+  }
+
   // Lookup logic when language+country codes are specified.
   switch (locale.languageCode) {
     case 'zh':
